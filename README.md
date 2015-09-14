@@ -13,4 +13,4 @@ Install mod_cloudflare and CSF.
 * Run the script (root@server [/] sh flarewall.sh).
 * Re-run the script if API or email values were entered incorrectly during setup.
 * Note: The uid:gid used in CSF must match the uid:gid for the *_REPORT scripts.
-* Restart csf (root@server [/] csf -r) and lfd (root@server [/] service lfd restart) for changes to take effect.
+* Restart csf (i.e: csf -r) and lfd (service lfd restart) for changes to take effect.
