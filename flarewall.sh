@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\n\nFlarewall v1.0.1 Installation"
-echo -e "Visit Flarewall.net [defunct] !"
+echo -e "https://github.com/k0nsl/flarewall"
 echo -e "------------------------------------"
 folder="/etc/csflare"
 cf_block=$folder"/cs_block.txt"
@@ -31,7 +31,7 @@ EMAIL="$input_cloudfemail"
 folder="/etc/csflare"
 cf_block=\$folder"/cs_block.txt"
 
-curl -A "Flarewall Script/1.0" -d "a=ban&tkn=\$TOKEN&email=\$EMAIL&key=\$1" $cloud_url
+curl -A "Flarewall/1.0.1" -d "a=ban&tkn=\$TOKEN&email=\$EMAIL&key=\$1" $cloud_url
 echo \$1 >> \$cf_block
 EOF
 
@@ -42,7 +42,7 @@ EMAIL="$input_cloudfemail"
 folder="/etc/csflare"
 cf_block=\$folder"/cs_block.txt"
 
-curl -A "Flarewall Script/1.0" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key=\$1" $cloud_url
+curl -A "Flarewall/1.0.1" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key=\$1" $cloud_url
 sed -i 's/\$1//g' \$cf_block
 sed -i '/^$/d' \$cf_block
 EOF
@@ -136,7 +136,7 @@ do
 	ip=\$line
 	if ! grep \$ip "\$cf_allow" >/dev/null 2>&1
 	then
-		curl -A "Flarewall Script/1.0" -d "a=wl&tkn=\$TOKEN&email=\$EMAILkey="\$ip $cloud_url		
+		curl -A "Flarewall/1.0.1" -d "a=wl&tkn=\$TOKEN&email=\$EMAILkey="\$ip $cloud_url		
 		echo \$ip >> \$cf_allow	
 	fi
 done < \$allow
@@ -146,7 +146,7 @@ do
 	ip=\$line
 	if ! grep \$ip "\$allow" >/dev/null 2>&1
 	then
-		curl -A "Flarewall Script/1.0" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
+		curl -A "Flarewall/1.0.1" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 	fi
 done < \$cf_allow
 
@@ -199,7 +199,7 @@ do
 	ip=\$line
 	if ! grep \$ip "\$cf_block" >/dev/null 2>&1
 	then
-		curl -A "Flarewall Script/1.0" -d "a=ban&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
+		curl -A "Flarewall/1.0.1" -d "a=ban&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 		echo \$ip >> \$cf_block	
 	fi
 done < \$block
@@ -209,7 +209,7 @@ do
 	ip=\$line
 	if ! grep \$ip "\$block" >/dev/null 2>&1
 	then
-		curl -A "Flarewall Script/1.0" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
+		curl -A "Flarewall/1.0.1" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 	fi
 done < \$cf_block
 
