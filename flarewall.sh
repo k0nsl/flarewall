@@ -108,14 +108,6 @@ do
 		if valid_ip \$ip; then
 			echo \$ip >> \$allow'.tmp'
 		fi
-		
-		#if valid_ip_range \$ip; then
-			#expr 32 - x
-			#echo \$((2**))
-			#echo 192.168.1.{0..24} | tr ' ' '\012'
-			#http://www.findmyip.org/
-			#echo \$ip' range : good'
-		#fi	
 	done < '/etc/csf/'\$i
 done
 
@@ -129,14 +121,6 @@ do
 	if valid_ip \$ip; then
 		echo \$ip >> \$allow'.tmp'
 	fi
-	
-	#if valid_ip_range \$ip; then
-		#expr 32 - x
-		#echo \$((2**))
-		#echo 192.168.1.{0..24} | tr ' ' '\012'
-		#http://www.findmyip.org/
-		#echo \$ip' range : good'
-	#fi	
 done < '/var/lib/csf/csf.tempallow'
 
 sort -u \$allow'.tmp' > \$allow
@@ -152,7 +136,6 @@ do
 	ip=\$line
 	if ! grep \$ip "\$cf_allow" >/dev/null 2>&1
 	then
-		#echo \$ip" : not found"
 		curl -A "Flarewall Script/1.0" -d "a=wl&tkn=\$TOKEN&email=\$EMAILkey="\$ip $cloud_url		
 		echo \$ip >> \$cf_allow	
 	fi
@@ -163,7 +146,6 @@ do
 	ip=\$line
 	if ! grep \$ip "\$allow" >/dev/null 2>&1
 	then
-		#echo \$ip" : not found"
 		curl -A "Flarewall Script/1.0" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 	fi
 done < \$cf_allow
@@ -189,14 +171,6 @@ do
 		if valid_ip \$ip; then
 			echo \$ip >> \$block'.tmp'
 		fi
-		
-		#if valid_ip_range \$ip; then
-			#expr 32 - x
-			#echo \$((2**))
-			#echo 192.168.1.{0..24} | tr ' ' '\012'
-			#http://www.findmyip.org/
-			#echo \$ip' range : good'
-		#fi	
 	done < '/etc/csf/'\$i
 done
 
@@ -210,14 +184,6 @@ do
 	if valid_ip \$ip; then
 		echo \$ip >> \$block'.tmp'
 	fi
-	
-	#if valid_ip_range \$ip; then
-		#expr 32 - x
-		#echo \$((2**))
-		#echo 192.168.1.{0..24} | tr ' ' '\012'
-		#http://www.findmyip.org/
-		#echo \$ip' range : good'
-	#fi	
 done < '/var/lib/csf/csf.tempban'
 
 sort -u \$block'.tmp' > \$block
@@ -233,7 +199,6 @@ do
 	ip=\$line
 	if ! grep \$ip "\$cf_block" >/dev/null 2>&1
 	then
-		#echo \$ip" : not found"
 		curl -A "Flarewall Script/1.0" -d "a=ban&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 		echo \$ip >> \$cf_block	
 	fi
@@ -244,7 +209,6 @@ do
 	ip=\$line
 	if ! grep \$ip "\$block" >/dev/null 2>&1
 	then
-		#echo \$ip" : block not found"
 		curl -A "Flarewall Script/1.0" -d "a=nul&tkn=\$TOKEN&email=\$EMAIL&key="\$ip $cloud_url		
 	fi
 done < \$cf_block
