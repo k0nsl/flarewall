@@ -1,6 +1,6 @@
 # About Flarewall
 
-This script bridges the gap between CSF's IP temporary & permanent banning abilities and Cloudflare's IP blocking service. As CSF bans IP addresses, this script will send those IP addresses to Cloudflare for blocking. Similarly, as CSF removes temporary IP bans, this script will remove the offending IP addresses from Cloudflare's blocked list. It has been tested on CentOS 6.5 x86_64 with cPanel.
+This script bridges the gap between CSF's IP temporary & permanent banning abilities and Cloudflare's IP blocking service. As CSF bans IP addresses, this script will send those IP addresses to Cloudflare for blocking. Similarly, as CSF removes temporary IP bans, this script will remove the offending IP addresses from Cloudflare's blocked list. It has been tested on `CentOS 6.5 x86_64` and `CloudLinux 6.7 x86_64`, with cPanel.
 
 ### Installation
 
